@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        Parse.initialize(with: ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) in
+            //configuration.applicationId = "CodePath-Parse-Test"
+            //configuration.server = "https://testparsecodepath.herokuapp.com/parse"
+            //configuration.applicationId = "CodePath-Parse"
+            //configuration.server = "http://45.79.67.127:1337/parse"
+            
+            /*configuration.applicationId = "myAppId"
+            configuration.clientKey = nil  // set to nil assuming you have not set clientKey
+            configuration.server = "https://parsechap.herokuapp.com/parse"
+            */
+            configuration.server = "https://parsechatcodepath.herokuapp.com/parse"
+            configuration.applicationId = "CodePath-Parse"
+        }))
+        if let currentUser = PFUser.current() {
+            print("Welcome back \(currentUser.username!) 😀")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let chatViewController = storyboard.instantiateViewController(withIdentifier: "ChatViewController")
+            window?.rootViewController = chatViewController
+
+
+        }
         return true
     }
 
