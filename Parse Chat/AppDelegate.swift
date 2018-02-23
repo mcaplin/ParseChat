@@ -25,8 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             /*configuration.applicationId = "myAppId"
             configuration.clientKey = nil  // set to nil assuming you have not set clientKey
-            configuration.server = "https://parsechap.herokuapp.com/parse"
-            */
+            configuration.server = "https://parsechap.herokuapp.com/parse"*/
+ 
             configuration.server = "https://parsechatcodepath.herokuapp.com/parse"
             configuration.applicationId = "CodePath-Parse"
         }))
@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Welcome back \(currentUser.username!) 😀")
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
-            let chatViewController = storyboard.instantiateViewController(withIdentifier: "ChatViewController")
+            let chatViewController = storyboard.instantiateViewController(withIdentifier: "NavigationController")
             window?.rootViewController = chatViewController
 
 
@@ -62,6 +62,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func logout() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController")
+        self.window?.rootViewController = loginViewController
     }
 
 

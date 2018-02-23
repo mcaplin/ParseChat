@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class ChatCell: UITableViewCell {
     
@@ -22,8 +23,7 @@ class ChatCell: UITableViewCell {
         
         bubbleView.layer.cornerRadius = 16
         bubbleView.clipsToBounds = true
-        // Initialization code
-        //print(message)
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

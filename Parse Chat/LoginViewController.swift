@@ -90,7 +90,7 @@ class LoginViewController: UIViewController {
             alert.message = "Please enter a different username."
         }
         if code == 101 { // invalid password
-            alert.title = "Password Incorrect"
+            alert.title = "Invalid Login"
         }
         if code == 100 {
             alert.title = "Cannot Connect to ParseChat"
@@ -101,7 +101,10 @@ class LoginViewController: UIViewController {
         present(alert, animated: true) {
         }
     }
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     
     

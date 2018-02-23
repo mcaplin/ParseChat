@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Parse_Chat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Parse_Chat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,7 +30,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ParseChat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xs1-bH-70r">
                                 <rect key="frame" x="101" y="123" width="172" height="50"/>
@@ -167,7 +167,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0mK-E6-alG"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Chat" id="K66-H1-Luv"/>
+                    <navigationItem key="navigationItem" title="Chat" id="K66-H1-Luv">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="4Nf-GK-LNJ">
+                            <connections>
+                                <action selector="onLogout:" destination="pxS-ku-b7w" id="9d8-Qf-k5h"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="chatField" destination="VTU-8K-jem" id="qV8-Ed-rhd"/>
                         <outlet property="tableView" destination="yIL-AG-3ws" id="mnK-99-cVh"/>

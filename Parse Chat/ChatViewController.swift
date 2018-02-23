@@ -76,9 +76,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let message = self.messages[indexPath.row]
         if let user = message["user"] as? PFUser {
             cell.user.text = user.username
+            if user.username == PFUser.current()?.username {
+                let color = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
+                cell.bubbleView.backgroundColor = color
+                cell.message.textColor = UIColor.black
+            }
         }
         else {
-            cell.user.text = "🅱️"
+            cell.user.text = "🅱️oneless User"
         }
 
         cell.message.text = (message["text"] as! String)
@@ -103,6 +108,18 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             
         }
         
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    @IBAction func onLogout(_ sender: Any) {
+        PFUser.logOutInBackground { (error) in
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.logout()
+            
+        }
     }
     
 
